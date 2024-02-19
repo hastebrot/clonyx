@@ -1,0 +1,4 @@
+.DS_Store
+.envrc
+.playwright/
+node_modules/

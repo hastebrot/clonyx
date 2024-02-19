@@ -15,8 +15,8 @@ There is the reference implementation of the design system developed by Schwarz 
 
 And these implementations based on the design system:
 
-- low capability htmx version, https://github.com/hastebrot/clonyx/onyx-htmx
-- high capability react version, https://github.com/hastebrot/clonyx/onyx-react
+- low-end htmx version, https://github.com/hastebrot/clonyx/onyx-htmx
+- high-end react version, https://github.com/hastebrot/clonyx/onyx-react
 
 **License:**
 
