@@ -1,0 +1,32 @@
+{
+  "[go]": {
+    "editor.tabSize": 2,
+    "editor.indentSize": "tabSize",
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "tailwindCSS.experimental.configFile": {
+    "onyx-htmx/tailwind.config.js": "onyx-htmx/**",
+    "onyx-react/tailwind.config.js": "onyx-react/**"
+  },
+  "tailwindCSS.classAttributes": ["Class", "className"],
+  "tailwindCSS.includeLanguages": {
+    "go": "html"
+  },
+  // https://github.com/tailwindlabs/tailwindcss-intellisense/issues/868#issuecomment-1784210626
+  "tailwindCSS.experimental.classRegex": [
+    [
+      // // Class\(([^()]*|\([^()]*\))*\)
+      // "Class\\((([^()]*|\\([^()]*\\))*)\\)",
+      "Class\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)",
+      "\"(.*?)\""
+    ]
+  ],
+  "editor.quickSuggestions": {
+    "strings": true
+  }
+}
