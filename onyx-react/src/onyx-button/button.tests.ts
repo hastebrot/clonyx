@@ -7,7 +7,7 @@ test.use({
 
 test("button matrix", async ({ page }) => {
   // given:
-  await page.goto("#/story/button");
+  await page.goto("#/stories/button-matrix");
 
   // when/then:
   await expect(page.locator("main")).toHaveScreenshot();

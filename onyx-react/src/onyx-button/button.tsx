@@ -27,14 +27,13 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
         "flex items-center justify-center",
         "py-[--onyx-spacing-3xs] px-[--onyx-spacing-sm]",
         "gap-[--onyx-spacing-5xs]",
-        "cursor-pointer",
         "rounded-[--onyx-radius-sm]",
         "border-[0.0625rem]",
         "bg-[--onyx-button-background-color]",
         "border-[--onyx-button-border-color]",
         "text-[--onyx-button-text-color]",
 
-        props.isDisabled && "cursor-default",
+        props.isDisabled ? "cursor-default" : "cursor-pointer",
 
         props.variation === "primary" && [
           props.mode === "default" && [

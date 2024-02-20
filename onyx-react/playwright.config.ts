@@ -9,6 +9,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   testDir: "./src",
+  testMatch: "src/**/*.tests.ts?(x)",
   outputDir: "./.playwright/test-results",
   reporter: [["list"], ["json", { outputFile: "./.playwright/test-results.json" }]],
 
