@@ -1,13 +1,13 @@
 import { createHashRouter } from "react-router-dom";
-import { ButtonStory } from "./onyx-button/button.story";
+import { OnyxButtonStory } from "./onyx-button/button.story";
 
 export const router = createHashRouter([
   {
     path: "/",
-    element: <ButtonStory />,
+    element: <OnyxButtonStory />,
   },
   {
     path: "/story/button",
-    element: <ButtonStory />,
+    element: <OnyxButtonStory />,
   },
 ]);

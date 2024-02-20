@@ -54,8 +54,8 @@ react routing
 
 react testing
 
-- `❯ bun add -D @types/bun vitest`
-- `❯ bun add -D happy-dom @testing-library/react @testing-library/user-event`
+- `❯ bun add -d @types/bun vitest`
+- `❯ bun add -d happy-dom @testing-library/react @testing-library/user-event`
 
 browser testing
 

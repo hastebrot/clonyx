@@ -5,7 +5,7 @@ test.use({
   deviceScaleFactor: 2,
 });
 
-test("should render story", async ({ page }) => {
+test("button matrix", async ({ page }) => {
   // given:
   await page.goto("#/story/button");
 

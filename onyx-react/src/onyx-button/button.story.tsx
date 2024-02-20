@@ -3,80 +3,175 @@ import { classNames } from "../helper/classes";
 import { OnyxTheme } from "../onyx-theme/theme";
 import { OnyxButton } from "./button";
 
-export const ButtonStory = () => {
+export const OnyxButtonStory = () => {
+  const labelWidth = 8;
+  const gridHeight = 5;
+
   return (
-    <OnyxTheme
-      theme="light"
-      className="scale-[1] origin-top text-[11px] leading-[11px] tracking-tight"
+    <TestLayout>
+      <OnyxTheme theme="light" className="scale-[1] origin-top">
+        <main className="inline-flex flex-col gap-[10px] p-[10px]">
+          <div className="grid grid-flow-col gap-[10px]">
+            <TestLabel label="primary" width={labelWidth} />
+            <TestGrid label="normal" height={gridHeight}>
+              <OnyxButton>Button</OnyxButton>
+            </TestGrid>
+            <TestGrid label="focus visible" height={gridHeight}>
+              <TestScope isFocusVisible>
+                <OnyxButton>Button</OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="hovered" height={gridHeight}>
+              <TestScope isHovered>
+                <OnyxButton>Button</OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="disabled" height={gridHeight}>
+              <OnyxButton isDisabled>Button</OnyxButton>
+            </TestGrid>
+          </div>
+
+          <div className="grid grid-flow-col gap-[10px]">
+            <TestLabel label="primary outline" width={labelWidth} />
+            <TestGrid label="normal" height={gridHeight}>
+              <OnyxButton mode="outline">Button</OnyxButton>
+            </TestGrid>
+            <TestGrid label="focus visible" height={gridHeight}>
+              <TestScope isFocusVisible>
+                <OnyxButton mode="outline">Button</OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="hovered" height={gridHeight}>
+              <TestScope isHovered>
+                <OnyxButton mode="outline">Button</OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="disabled" height={gridHeight}>
+              <OnyxButton mode="outline" isDisabled>
+                Button
+              </OnyxButton>
+            </TestGrid>
+          </div>
+
+          <div className="grid grid-flow-col gap-[5px]">
+            <TestLabel label="secondary" width={labelWidth} />
+            <TestGrid label="normal" height={5}>
+              <OnyxButton variation="secondary">Button</OnyxButton>
+            </TestGrid>
+            <TestGrid label="focus visible" height={gridHeight}>
+              <TestScope isFocusVisible>
+                <OnyxButton variation="secondary">Button</OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="hovered" height={gridHeight}>
+              <TestScope isHovered>
+                <OnyxButton variation="secondary">Button</OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="disabled" height={gridHeight}>
+              <OnyxButton variation="secondary" isDisabled>
+                Button
+              </OnyxButton>
+            </TestGrid>
+          </div>
+
+          <div className="grid grid-flow-col gap-[5px]">
+            <TestLabel label="secondary outline" width={labelWidth} />
+            <TestGrid label="normal" height={gridHeight}>
+              <OnyxButton variation="secondary" mode="outline">
+                Button
+              </OnyxButton>
+            </TestGrid>
+            <TestGrid label="focus visible" height={gridHeight}>
+              <TestScope isFocusVisible>
+                <OnyxButton variation="secondary" mode="outline">
+                  Button
+                </OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="hovered" height={gridHeight}>
+              <TestScope isHovered>
+                <OnyxButton variation="secondary" mode="outline">
+                  Button
+                </OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="disabled" height={gridHeight}>
+              <OnyxButton variation="secondary" mode="outline" isDisabled>
+                Button
+              </OnyxButton>
+            </TestGrid>
+          </div>
+
+          <div className="grid grid-flow-col gap-[5px]">
+            <TestLabel label="danger" width={labelWidth} />
+            <TestGrid label="normal" height={5}>
+              <OnyxButton variation="danger">Button</OnyxButton>
+            </TestGrid>
+            <TestGrid label="focus visible" height={gridHeight}>
+              <TestScope isFocusVisible>
+                <OnyxButton variation="danger">Button</OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="hovered" height={gridHeight}>
+              <TestScope isHovered>
+                <OnyxButton variation="danger">Button</OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="disabled" height={gridHeight}>
+              <OnyxButton variation="danger" isDisabled>
+                Button
+              </OnyxButton>
+            </TestGrid>
+          </div>
+
+          <div className="grid grid-flow-col gap-[5px]">
+            <TestLabel label="danger outline" width={labelWidth} />
+            <TestGrid label="normal" height={gridHeight}>
+              <OnyxButton variation="danger" mode="outline">
+                Button
+              </OnyxButton>
+            </TestGrid>
+            <TestGrid label="focus visible" height={gridHeight}>
+              <TestScope isFocusVisible>
+                <OnyxButton variation="danger" mode="outline">
+                  Button
+                </OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="hovered" height={gridHeight}>
+              <TestScope isHovered>
+                <OnyxButton variation="danger" mode="outline">
+                  Button
+                </OnyxButton>
+              </TestScope>
+            </TestGrid>
+            <TestGrid label="disabled" height={gridHeight}>
+              <OnyxButton variation="danger" mode="outline" isDisabled>
+                Button
+              </OnyxButton>
+            </TestGrid>
+          </div>
+        </main>
+      </OnyxTheme>
+    </TestLayout>
+  );
+};
+
+type TestLayoutProps = {
+  children?: React.ReactNode;
+};
+
+const TestLayout = ({ children }: TestLayoutProps) => {
+  return (
+    <div
+      className={classNames(
+        "[text-rendering:optimizelegibility] [-webkit-font-smoothing:antialiased] [-moz-osx-font-smoothing:grayscale]",
+        "min-h-[100vh] supports-[-webkit-touch-callout:none]:min-h-[-webkit-fill-available]"
+      )}
     >
-      <main className="inline-flex flex-col gap-[5px] p-[10px]">
-        <div className="grid grid-flow-col gap-[5px]">
-          <TestLabel label="primary" width={10} />
-          <TestGrid label="default" height={4}>
-            <OnyxButton>Button</OnyxButton>
-          </TestGrid>
-          <TestGrid label="focus" height={4}>
-            <TestScope isFocused>
-              <OnyxButton>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-          <TestGrid label="hover" height={4}>
-            <TestScope isHovered>
-              <OnyxButton>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-          <TestGrid label="active" height={4}>
-            <TestScope isPressed>
-              <OnyxButton>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-        </div>
-
-        <div className="grid grid-flow-col gap-[5px]">
-          <TestLabel label="secondary" width={10} />
-          <TestGrid label="default" height={4}>
-            <OnyxButton>Button</OnyxButton>
-          </TestGrid>
-          <TestGrid label="focus" height={4}>
-            <TestScope isFocused>
-              <OnyxButton>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-          <TestGrid label="hover" height={4}>
-            <TestScope isHovered>
-              <OnyxButton>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-          <TestGrid label="active" height={4}>
-            <TestScope isPressed>
-              <OnyxButton>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-        </div>
-
-        <div className="grid grid-flow-col gap-[5px]">
-          <TestLabel label="disabled" width={10} />
-          <TestGrid label="default" height={4}>
-            <OnyxButton isDisabled>Button</OnyxButton>
-          </TestGrid>
-          <TestGrid label="focus" height={4}>
-            <TestScope isFocused>
-              <OnyxButton isDisabled>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-          <TestGrid label="hover" height={4}>
-            <TestScope isHovered>
-              <OnyxButton isDisabled>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-          <TestGrid label="active" height={4}>
-            <TestScope isPressed>
-              <OnyxButton isDisabled>Button</OnyxButton>
-            </TestScope>
-          </TestGrid>
-        </div>
-      </main>
-    </OnyxTheme>
+      {children}
+    </div>
   );
 };
 
@@ -93,7 +188,7 @@ const TestLabel = (props: TestLabelProps) => {
           "--label-width": props.width ?? 10,
         } as CSSProperties
       }
-      className="font-mono text-[8px] pb-[4px] w-[calc(var(--label-width)*10px+1px)]"
+      className="font-mono text-[10px] pb-[5px] w-[calc(var(--label-width)*10px+1px)]"
     >
       {props.label}
     </div>
@@ -114,7 +209,7 @@ const TestGrid = ({ children, ...props }: TestGridProps) => {
       <div
         style={
           {
-            "--grid-color": "var(--tabs-border)",
+            "--grid-color": "#ddd",
             "--grid-width": props.width ?? 10,
             "--grid-height": props.height ?? 10,
           } as React.CSSProperties
@@ -122,8 +217,7 @@ const TestGrid = ({ children, ...props }: TestGridProps) => {
         className={classNames(
           "w-[calc(var(--grid-width)*10px+1px)] h-[calc(var(--grid-height)*10px+1px)]",
           "[background-image:linear-gradient(to_right,var(--grid-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--grid-color)_1px,transparent_1px)]",
-          "[background-size:10px_10px]",
-          "overflow-hidden"
+          "[background-size:10px_10px]"
         )}
       >
         {children}
@@ -135,6 +229,7 @@ const TestGrid = ({ children, ...props }: TestGridProps) => {
 type TestScopeProps = {
   children?: React.ReactNode;
   isFocused?: boolean;
+  isFocusVisible?: boolean;
   isHovered?: boolean;
   isPressed?: boolean;
 };
@@ -146,6 +241,9 @@ const TestScope = ({ children, ...props }: TestScopeProps) => {
       for (const node of ref.current.children) {
         if (props.isFocused) {
           node.setAttribute("data-focused", "true");
+        }
+        if (props.isFocusVisible) {
+          node.setAttribute("data-focus-visible", "true");
         }
         if (props.isHovered) {
           node.setAttribute("data-hovered", "true");

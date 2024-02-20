@@ -12,6 +12,9 @@ export default defineConfig({
   outputDir: "./.playwright/test-results",
   reporter: [["list"], ["json", { outputFile: "./.playwright/test-results.json" }]],
 
+  snapshotDir: "./src",
+  snapshotPathTemplate: "{snapshotDir}/{testFileDir}/snapshots/{arg}-{projectName}-{platform}{ext}",
+
   use: {
     baseURL: "http://localhost:6020/",
   },
