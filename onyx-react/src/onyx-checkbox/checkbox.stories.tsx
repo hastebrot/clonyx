@@ -1,57 +1,33 @@
 import { cloneElement } from "react";
 import { TestGrid, TestLabel, TestLayout, TestScope } from "../helper/tests";
 import { OnyxTheme, OnyxThemeProps } from "../onyx-theme/theme";
-import { OnyxButton, OnyxButtonProps } from "./button";
+import { OnyxCheckbox, OnyxCheckboxProps } from "./checkbox";
 
-export const OnyxButtonMatrix = () => {
+export const OnyxCheckboxMatrix = () => {
   const themes = [
     <OnyxTheme theme="light" className="bg-white text-black [--grid-color:#d4d4d4]" />,
     <OnyxTheme theme="dark" className="bg-black text-white [--grid-color:#353535]" />,
   ];
 
-  type OnyxButtonVariant = { label: string; props: OnyxButtonProps };
-  const variants: OnyxButtonVariant[] = [
+  type OnyxCheckboxVariant = { label: string; props: OnyxCheckboxProps };
+  const variants: OnyxCheckboxVariant[] = [
     {
-      label: "primary",
-      props: { children: "Label", variation: "primary" },
+      label: "unselected",
+      props: { children: "Label", isSelected: false },
     },
     {
-      label: "primary outline",
-      props: { children: "Label", variation: "primary", mode: "outline" },
+      label: "selected",
+      props: { children: "Label", isSelected: true },
     },
     {
-      label: "primary plain",
-      props: { children: "Label", variation: "primary", mode: "plain" },
-    },
-    {
-      label: "secondary",
-      props: { children: "Label", variation: "secondary" },
-    },
-    {
-      label: "secondary outline",
-      props: { children: "Label", variation: "secondary", mode: "outline" },
-    },
-    {
-      label: "secondary plain",
-      props: { children: "Label", variation: "secondary", mode: "plain" },
-    },
-    {
-      label: "danger",
-      props: { children: "Label", variation: "danger" },
-    },
-    {
-      label: "danger outline",
-      props: { children: "Label", variation: "danger", mode: "outline" },
-    },
-    {
-      label: "danger plain",
-      props: { children: "Label", variation: "danger", mode: "plain" },
+      label: "indeterminate",
+      props: { children: "Label", isIndeterminate: true },
     },
   ];
 
   const labelWidth = 10;
   const gridHeight = 5;
-  const gridWidth = 10;
+  const gridWidth = 12;
 
   return (
     <TestLayout>
@@ -67,34 +43,34 @@ export const OnyxButtonMatrix = () => {
                     <TestLabel label={variant.label} width={labelWidth} />
 
                     <TestGrid label="normal" height={gridHeight} width={gridWidth}>
-                      <OnyxButton {...variant.props} />
+                      <OnyxCheckbox {...variant.props} />
                     </TestGrid>
 
                     <TestGrid label="hovered" height={gridHeight} width={gridWidth}>
                       <TestScope isHovered>
-                        <OnyxButton {...variant.props} />
+                        <OnyxCheckbox {...variant.props} />
                       </TestScope>
                     </TestGrid>
 
-                    <TestGrid label="focus-visible" height={gridHeight} width={gridWidth}>
+                    <TestGrid label="focus visible" height={gridHeight} width={gridWidth}>
                       <TestScope isFocusVisible>
-                        <OnyxButton {...variant.props} />
+                        <OnyxCheckbox {...variant.props} />
                       </TestScope>
                     </TestGrid>
 
                     <TestGrid label="disabled, normal" height={gridHeight} width={gridWidth}>
-                      <OnyxButton {...variant.props} isDisabled />
+                      <OnyxCheckbox {...variant.props} isDisabled />
                     </TestGrid>
 
                     <TestGrid label="disabled, hovered" height={gridHeight} width={gridWidth}>
                       <TestScope isHovered>
-                        <OnyxButton {...variant.props} isDisabled />
+                        <OnyxCheckbox {...variant.props} isDisabled />
                       </TestScope>
                     </TestGrid>
 
                     <TestGrid label="disabled, focus-visible" height={gridHeight} width={gridWidth}>
                       <TestScope isFocusVisible>
-                        <OnyxButton {...variant.props} isDisabled />
+                        <OnyxCheckbox {...variant.props} isDisabled />
                       </TestScope>
                     </TestGrid>
                   </div>
