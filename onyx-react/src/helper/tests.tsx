@@ -22,6 +22,7 @@ export const TestLayout = ({ children }: TestLayoutProps) => {
 export type TestLabelProps = {
   label?: React.ReactNode;
   width?: number;
+  nowrapText?: boolean;
 };
 
 export const TestLabel = (props: TestLabelProps) => {
@@ -29,10 +30,14 @@ export const TestLabel = (props: TestLabelProps) => {
     <div
       style={
         {
-          "--label-width": props.width ?? 10,
+          "--label-width": props.width,
         } as CSSProperties
       }
-      className="font-mono text-[10px] pb-[5px] w-[calc(var(--label-width)*10px+1px)]"
+      className={classNames(
+        "font-mono text-[10px] leading-normal",
+        "pb-[5px] w-[calc(var(--label-width)*10px+1px)]",
+        !props.nowrapText ? "[word-spacing:999px] break-keep" : "whitespace-nowrap"
+      )}
     >
       {props.label}
     </div>
@@ -48,8 +53,8 @@ export type TestGridProps = {
 
 export const TestGrid = ({ children, ...props }: TestGridProps) => {
   return (
-    <div>
-      <TestLabel label={props.label} />
+    <div className="flex flex-col items-start">
+      <TestLabel label={props.label} nowrapText />
       <div
         style={
           {

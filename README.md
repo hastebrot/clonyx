@@ -24,15 +24,15 @@ Onyx is licensed under the "Apache License 2.0", https://github.com/schwarzit/on
 
 **Status:**
 
-| packages/sit-onyx/src/components | onyx-htmx | onyx-react                                                      |
-| :------------------------------- | :-------- | :-------------------------------------------------------------- |
-| OnyxButton                       | TODO      | `main@2024-02-20`, no icon slot, no plain mode, no button types |
-| OnyxCheckbox                     | TODO      | TODO                                                            |
-| OnyxCheckboxGroup                | TODO      | TODO                                                            |
-| OnyxHeadline                     | TODO      | TODO                                                            |
-| OnyxIcon                         | TODO      | TODO                                                            |
-| OnyxRadioButton                  | TODO      | TODO                                                            |
-| OnyxRadioButtonGroup             | TODO      | TODO                                                            |
+| packages/sit-onyx/src/components | onyx-htmx | onyx-react                                     |
+| :------------------------------- | :-------- | :--------------------------------------------- |
+| OnyxButton                       | TODO      | `main@2024-02-20`, no label slot, no icon slot |
+| OnyxCheckbox                     | TODO      | TODO                                           |
+| OnyxCheckboxGroup                | TODO      | TODO                                           |
+| OnyxHeadline                     | TODO      | TODO                                           |
+| OnyxIcon                         | TODO      | TODO                                           |
+| OnyxRadioButton                  | TODO      | TODO                                           |
+| OnyxRadioButtonGroup             | TODO      | TODO                                           |
 
 | packages/sit-onyx/src/styles | onyx-htmx | onyx-react        |
 | :--------------------------- | :-------- | :---------------- |

@@ -2,9 +2,9 @@ import { Button, ButtonProps } from "react-aria-components";
 import { classNames, classNamesUniq } from "../helper/classes";
 
 export type OnyxButtonProps = ButtonProps & {
-  type?: "button";
+  type?: "button" | "submit" | "reset";
   variation?: "primary" | "secondary" | "danger";
-  mode?: "default" | "outline";
+  mode?: "default" | "outline" | "plain";
 };
 
 export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
@@ -21,8 +21,11 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
         "[--onyx-button-border-color:transparent]",
         "[--onyx-button-text-color:--onyx-color-text-icons-primary-intense]",
         "[--onyx-button-outline-color:--onyx-color-base-primary-200]",
-        "data-[hovered]:[--onyx-button-background-color:--onyx-button-background-hover-color]",
-        "data-[focus-visible]:[outline:0.25rem_solid_var(--onyx-button-outline-color)]",
+
+        !props.isDisabled && [
+          "data-[hovered]:[--onyx-button-background-color:--onyx-button-background-hover-color]",
+          "data-[focus-visible]:[outline:0.25rem_solid_var(--onyx-button-outline-color)]",
+        ],
 
         "flex items-center justify-center",
         "py-[--onyx-spacing-3xs] px-[--onyx-spacing-sm]",
@@ -36,6 +39,11 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
         props.isDisabled ? "cursor-default" : "cursor-pointer",
 
         props.variation === "primary" && [
+          props.isDisabled && [
+            /* wrap */
+            "[--onyx-button-text-color:--onyx-color-text-icons-primary-soft]",
+          ],
+
           props.mode === "default" && [
             "[--onyx-button-background-color:--onyx-color-base-primary-500]",
             "[--onyx-button-background-hover-color:--onyx-color-base-primary-400]",
@@ -53,8 +61,8 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
             "[--onyx-button-border-color:--onyx-color-base-primary-500]",
 
             props.isDisabled && [
+              /* wrap */
               "[--onyx-button-border-color:--onyx-color-base-primary-200]",
-              "[--onyx-button-text-color:--onyx-color-text-icons-primary-soft]",
             ],
           ],
         ],
@@ -64,6 +72,11 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
           "[--onyx-button-outline-color:--onyx-color-base-neutral-300]",
           "[--onyx-button-text-color:--onyx-color-text-icons-neutral-intense]",
 
+          props.isDisabled && [
+            /* wrap */
+            "[--onyx-button-text-color:--onyx-color-text-icons-neutral-soft]",
+          ],
+
           props.mode === "default" && [
             "[--onyx-button-background-color:--onyx-color-base-background-blank]",
             "[--onyx-button-background-hover-color:--onyx-color-base-neutral-200]",
@@ -72,7 +85,6 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
             props.isDisabled && [
               "[--onyx-button-background-color:--onyx-color-base-background-blank]",
               "[--onyx-button-border-color:--onyx-color-base-neutral-200]",
-              "[--onyx-button-text-color:--onyx-color-text-icons-neutral-soft]",
             ],
           ],
 
@@ -80,8 +92,8 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
             "[--onyx-button-border-color:--onyx-color-base-neutral-400]",
 
             props.isDisabled && [
+              /* wrap */
               "[--onyx-button-border-color:--onyx-color-base-neutral-200]",
-              "[--onyx-button-text-color:--onyx-color-text-icons-neutral-soft]",
             ],
           ],
         ],
@@ -91,6 +103,11 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
           "[--onyx-button-outline-color:--onyx-color-base-danger-300]",
           "[--onyx-button-text-color:--onyx-color-text-icons-danger-intense]",
 
+          props.isDisabled && [
+            /* wrap */
+            "[--onyx-button-text-color:--onyx-color-text-icons-danger-medium]",
+          ],
+
           props.mode === "default" && [
             "[--onyx-button-background-color:--onyx-color-base-danger-200]",
             "[--onyx-button-background-hover-color:--onyx-color-base-danger-100]",
@@ -99,7 +116,6 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
             props.isDisabled && [
               "[--onyx-button-background-color:--onyx-color-base-danger-100]",
               "[--onyx-button-border-color:--onyx-color-base-danger-200]",
-              "[--onyx-button-text-color:--onyx-color-text-icons-danger-medium]",
             ],
           ],
 
@@ -107,8 +123,8 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
             "[--onyx-button-border-color:--onyx-color-base-danger-500]",
 
             props.isDisabled && [
+              /* wrap */
               "[--onyx-button-border-color:--onyx-color-base-danger-200]",
-              "[--onyx-button-text-color:--onyx-color-text-icons-danger-medium]",
             ],
           ],
         ]

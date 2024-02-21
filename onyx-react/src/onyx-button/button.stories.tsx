@@ -13,13 +13,16 @@ export const OnyxButtonMatrix = () => {
   const variants: OnyxButtonVariant[] = [
     { label: "primary", props: { variation: "primary" } },
     { label: "primary outline", props: { variation: "primary", mode: "outline" } },
+    { label: "primary plain", props: { variation: "primary", mode: "plain" } },
     { label: "secondary", props: { variation: "secondary" } },
     { label: "secondary outline", props: { variation: "secondary", mode: "outline" } },
+    { label: "secondary plain", props: { variation: "secondary", mode: "plain" } },
     { label: "danger", props: { variation: "danger" } },
     { label: "danger outline", props: { variation: "danger", mode: "outline" } },
+    { label: "danger plain", props: { variation: "danger", mode: "plain" } },
   ];
 
-  const labelWidth = 8;
+  const labelWidth = 10;
   const gridHeight = 5;
   const gridWidth = 10;
 
@@ -46,16 +49,32 @@ export const OnyxButtonMatrix = () => {
                       </TestScope>
                     </TestGrid>
 
-                    <TestGrid label="focus visible" height={gridHeight} width={gridWidth}>
+                    <TestGrid label="focus-visible" height={gridHeight} width={gridWidth}>
                       <TestScope isFocusVisible>
                         <OnyxButton {...variant.props}>Label</OnyxButton>
                       </TestScope>
                     </TestGrid>
 
-                    <TestGrid label="normal disabled" height={gridHeight} width={gridWidth}>
+                    <TestGrid label="disabled, normal" height={gridHeight} width={gridWidth}>
                       <OnyxButton {...variant.props} isDisabled>
                         Label
                       </OnyxButton>
+                    </TestGrid>
+
+                    <TestGrid label="disabled, hovered" height={gridHeight} width={gridWidth}>
+                      <TestScope isHovered>
+                        <OnyxButton {...variant.props} isDisabled>
+                          Label
+                        </OnyxButton>
+                      </TestScope>
+                    </TestGrid>
+
+                    <TestGrid label="disabled, focus-visible" height={gridHeight} width={gridWidth}>
+                      <TestScope isFocusVisible>
+                        <OnyxButton {...variant.props} isDisabled>
+                          Label
+                        </OnyxButton>
+                      </TestScope>
                     </TestGrid>
                   </div>
                 );
