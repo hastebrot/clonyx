@@ -9,19 +9,22 @@ export const OnyxCheckboxMatrix = () => {
     <OnyxTheme theme="dark" className="bg-black text-white [--grid-color:#353535]" />,
   ];
 
-  type OnyxCheckboxVariant = { label: string; props: OnyxCheckboxProps };
-  const variants: OnyxCheckboxVariant[] = [
+  type MatrixVariant = {
+    label: string;
+    checkboxProps: OnyxCheckboxProps;
+  };
+  const variants: MatrixVariant[] = [
     {
       label: "unselected",
-      props: { children: "Label", isSelected: false },
+      checkboxProps: { children: "Label", isSelected: false },
     },
     {
       label: "selected",
-      props: { children: "Label", isSelected: true },
+      checkboxProps: { children: "Label", isSelected: true },
     },
     {
       label: "indeterminate",
-      props: { children: "Label", isIndeterminate: true },
+      checkboxProps: { children: "Label", isIndeterminate: true },
     },
   ];
 
@@ -43,34 +46,34 @@ export const OnyxCheckboxMatrix = () => {
                     <TestLabel label={variant.label} width={labelWidth} />
 
                     <TestGrid label="normal" height={gridHeight} width={gridWidth}>
-                      <OnyxCheckbox {...variant.props} />
+                      <OnyxCheckbox {...variant.checkboxProps} />
                     </TestGrid>
 
                     <TestGrid label="hovered" height={gridHeight} width={gridWidth}>
                       <TestScope isHovered>
-                        <OnyxCheckbox {...variant.props} />
+                        <OnyxCheckbox {...variant.checkboxProps} />
                       </TestScope>
                     </TestGrid>
 
-                    <TestGrid label="focus visible" height={gridHeight} width={gridWidth}>
+                    <TestGrid label="focus-visible" height={gridHeight} width={gridWidth}>
                       <TestScope isFocusVisible>
-                        <OnyxCheckbox {...variant.props} />
+                        <OnyxCheckbox {...variant.checkboxProps} />
                       </TestScope>
                     </TestGrid>
 
                     <TestGrid label="disabled, normal" height={gridHeight} width={gridWidth}>
-                      <OnyxCheckbox {...variant.props} isDisabled />
+                      <OnyxCheckbox {...variant.checkboxProps} isDisabled />
                     </TestGrid>
 
                     <TestGrid label="disabled, hovered" height={gridHeight} width={gridWidth}>
                       <TestScope isHovered>
-                        <OnyxCheckbox {...variant.props} isDisabled />
+                        <OnyxCheckbox {...variant.checkboxProps} isDisabled />
                       </TestScope>
                     </TestGrid>
 
                     <TestGrid label="disabled, focus-visible" height={gridHeight} width={gridWidth}>
                       <TestScope isFocusVisible>
-                        <OnyxCheckbox {...variant.props} isDisabled />
+                        <OnyxCheckbox {...variant.checkboxProps} isDisabled />
                       </TestScope>
                     </TestGrid>
                   </div>
