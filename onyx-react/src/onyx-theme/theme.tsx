@@ -1,7 +1,7 @@
 import { classNames } from "../helper/classes";
-import "./variables-onyx.css";
-import "./variables-light.css";
 import "./variables-dark.css";
+import "./variables-light.css";
+import "./variables-onyx.css";
 
 export type OnyxThemeProps = React.PropsWithChildren & {
   theme?: "light" | "dark";
