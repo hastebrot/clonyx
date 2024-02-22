@@ -9,6 +9,12 @@
       "source.organizeImports": "explicit"
     }
   },
+  "[typescript][typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
   "tailwindCSS.experimental.configFile": {
     "onyx-htmx/tailwind.config.js": "onyx-htmx/**",
     "onyx-react/tailwind.config.js": "onyx-react/**"
