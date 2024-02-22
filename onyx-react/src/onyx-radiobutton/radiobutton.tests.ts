@@ -5,9 +5,9 @@ test.use({
   deviceScaleFactor: 2,
 });
 
-test("button matrix", async ({ page }) => {
+test("radiobutton matrix", async ({ page }) => {
   // given:
-  await page.goto("#/stories/button-matrix");
+  await page.goto("#/stories/radiobutton-matrix");
 
   // when/then:
   await expect(page.locator("main")).toHaveScreenshot();

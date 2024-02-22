@@ -1,12 +1,14 @@
 import { Fragment } from "react";
-import { Checkbox, CheckboxProps } from "react-aria-components";
+import { Radio, RadioProps } from "react-aria-components";
 import { classNames, classNamesUniq } from "../helper/classes";
 
-export type OnyxCheckboxProps = CheckboxProps & {};
+export type OnyxRadioButtonProps = RadioProps & {
+  children?: React.ReactNode;
+};
 
-export const OnyxCheckbox = ({ children, ...props }: OnyxCheckboxProps) => {
+export const OnyxRadioButton = ({ children, ...props }: OnyxRadioButtonProps) => {
   return (
-    <Checkbox
+    <Radio
       {...props}
       className={(state) =>
         classNamesUniq(
@@ -45,7 +47,7 @@ export const OnyxCheckbox = ({ children, ...props }: OnyxCheckboxProps) => {
                 "bg-[--onyx-color-base-background-blank]",
                 "bg-no-repeat bg-[position:50%] bg-[size:100%]",
 
-                (state.isSelected || state.isIndeterminate) && [
+                state.isSelected && [
                   "border-[--onyx-color-base-primary-500]",
                   "bg-[--onyx-color-base-primary-500]",
                 ],
@@ -65,11 +67,6 @@ export const OnyxCheckbox = ({ children, ...props }: OnyxCheckboxProps) => {
                   <path d="m21.311 10.793-8.293 8.293-3.291-3.292-1.415 1.415 4.706 4.705 9.707-9.707z" />
                 </svg>
               )}
-              {state.isIndeterminate && (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 32 32">
-                  <path d="M8 15h16v2H8z" />
-                </svg>
-              )}
             </div>
           </div>
           <div
@@ -84,6 +81,6 @@ export const OnyxCheckbox = ({ children, ...props }: OnyxCheckboxProps) => {
           </div>
         </Fragment>
       )}
-    </Checkbox>
+    </Radio>
   );
 };

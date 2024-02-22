@@ -9,43 +9,46 @@ export const OnyxButtonMatrix = () => {
     <OnyxTheme theme="dark" className="bg-black text-white [--grid-color:#353535]" />,
   ];
 
-  type OnyxButtonVariant = { label: string; props: OnyxButtonProps };
-  const variants: OnyxButtonVariant[] = [
+  type MatrixVariant = {
+    label: string;
+    buttonProps: OnyxButtonProps;
+  };
+  const variants: MatrixVariant[] = [
     {
       label: "primary",
-      props: { children: "Label", variation: "primary" },
+      buttonProps: { children: "Label", variation: "primary" },
     },
     {
       label: "primary outline",
-      props: { children: "Label", variation: "primary", mode: "outline" },
+      buttonProps: { children: "Label", variation: "primary", mode: "outline" },
     },
     {
       label: "primary plain",
-      props: { children: "Label", variation: "primary", mode: "plain" },
+      buttonProps: { children: "Label", variation: "primary", mode: "plain" },
     },
     {
       label: "secondary",
-      props: { children: "Label", variation: "secondary" },
+      buttonProps: { children: "Label", variation: "secondary" },
     },
     {
       label: "secondary outline",
-      props: { children: "Label", variation: "secondary", mode: "outline" },
+      buttonProps: { children: "Label", variation: "secondary", mode: "outline" },
     },
     {
       label: "secondary plain",
-      props: { children: "Label", variation: "secondary", mode: "plain" },
+      buttonProps: { children: "Label", variation: "secondary", mode: "plain" },
     },
     {
       label: "danger",
-      props: { children: "Label", variation: "danger" },
+      buttonProps: { children: "Label", variation: "danger" },
     },
     {
       label: "danger outline",
-      props: { children: "Label", variation: "danger", mode: "outline" },
+      buttonProps: { children: "Label", variation: "danger", mode: "outline" },
     },
     {
       label: "danger plain",
-      props: { children: "Label", variation: "danger", mode: "plain" },
+      buttonProps: { children: "Label", variation: "danger", mode: "plain" },
     },
   ];
 
@@ -67,34 +70,34 @@ export const OnyxButtonMatrix = () => {
                     <TestLabel label={variant.label} width={labelWidth} />
 
                     <TestGrid label="normal" height={gridHeight} width={gridWidth}>
-                      <OnyxButton {...variant.props} />
+                      <OnyxButton {...variant.buttonProps} />
                     </TestGrid>
 
                     <TestGrid label="hovered" height={gridHeight} width={gridWidth}>
                       <TestScope isHovered>
-                        <OnyxButton {...variant.props} />
+                        <OnyxButton {...variant.buttonProps} />
                       </TestScope>
                     </TestGrid>
 
                     <TestGrid label="focus-visible" height={gridHeight} width={gridWidth}>
                       <TestScope isFocusVisible>
-                        <OnyxButton {...variant.props} />
+                        <OnyxButton {...variant.buttonProps} />
                       </TestScope>
                     </TestGrid>
 
                     <TestGrid label="disabled, normal" height={gridHeight} width={gridWidth}>
-                      <OnyxButton {...variant.props} isDisabled />
+                      <OnyxButton {...variant.buttonProps} isDisabled />
                     </TestGrid>
 
                     <TestGrid label="disabled, hovered" height={gridHeight} width={gridWidth}>
                       <TestScope isHovered>
-                        <OnyxButton {...variant.props} isDisabled />
+                        <OnyxButton {...variant.buttonProps} isDisabled />
                       </TestScope>
                     </TestGrid>
 
                     <TestGrid label="disabled, focus-visible" height={gridHeight} width={gridWidth}>
                       <TestScope isFocusVisible>
-                        <OnyxButton {...variant.props} isDisabled />
+                        <OnyxButton {...variant.buttonProps} isDisabled />
                       </TestScope>
                     </TestGrid>
                   </div>

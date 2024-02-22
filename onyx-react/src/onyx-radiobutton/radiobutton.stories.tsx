@@ -1,9 +1,10 @@
 import { cloneElement } from "react";
+import { RadioGroup, RadioGroupProps } from "react-aria-components";
 import { TestGrid, TestLabel, TestLayout, TestScope } from "../helper/tests";
 import { OnyxTheme, OnyxThemeProps } from "../onyx-theme/theme";
-import { OnyxCheckbox, OnyxCheckboxProps } from "./checkbox";
+import { OnyxRadioButton, OnyxRadioButtonProps } from "./radiobutton";
 
-export const OnyxCheckboxMatrix = () => {
+export const OnyxRadioButtonMatrix = () => {
   const themes = [
     <OnyxTheme theme="light" className="bg-white text-black [--grid-color:#d4d4d4]" />,
     <OnyxTheme theme="dark" className="bg-black text-white [--grid-color:#353535]" />,
@@ -11,20 +12,19 @@ export const OnyxCheckboxMatrix = () => {
 
   type MatrixVariant = {
     label: string;
-    checkboxProps: OnyxCheckboxProps;
+    radioButtonProps: OnyxRadioButtonProps;
+    radioGroupProps: RadioGroupProps;
   };
   const variants: MatrixVariant[] = [
     {
       label: "unselected",
-      checkboxProps: { children: "Label", isSelected: false },
+      radioButtonProps: { children: "Label", value: "radio" },
+      radioGroupProps: { value: "" },
     },
     {
       label: "selected",
-      checkboxProps: { children: "Label", isSelected: true },
-    },
-    {
-      label: "indeterminate",
-      checkboxProps: { children: "Label", isIndeterminate: true },
+      radioButtonProps: { children: "Label", value: "radio" },
+      radioGroupProps: { value: "radio" },
     },
   ];
 
@@ -46,35 +46,25 @@ export const OnyxCheckboxMatrix = () => {
                     <TestLabel label={variant.label} width={labelWidth} />
 
                     <TestGrid label="normal" height={gridHeight} width={gridWidth}>
-                      <OnyxCheckbox {...variant.checkboxProps} />
+                      <RadioGroup {...variant.radioGroupProps}>
+                        <OnyxRadioButton {...variant.radioButtonProps} />
+                      </RadioGroup>
                     </TestGrid>
 
                     <TestGrid label="hovered" height={gridHeight} width={gridWidth}>
-                      <TestScope isHovered>
-                        <OnyxCheckbox {...variant.checkboxProps} />
-                      </TestScope>
+                      <RadioGroup {...variant.radioGroupProps}>
+                        <TestScope isHovered>
+                          <OnyxRadioButton {...variant.radioButtonProps} />
+                        </TestScope>
+                      </RadioGroup>
                     </TestGrid>
 
                     <TestGrid label="focus-visible" height={gridHeight} width={gridWidth}>
-                      <TestScope isFocusVisible>
-                        <OnyxCheckbox {...variant.checkboxProps} />
-                      </TestScope>
-                    </TestGrid>
-
-                    <TestGrid label="disabled, normal" height={gridHeight} width={gridWidth}>
-                      <OnyxCheckbox {...variant.checkboxProps} isDisabled />
-                    </TestGrid>
-
-                    <TestGrid label="disabled, hovered" height={gridHeight} width={gridWidth}>
-                      <TestScope isHovered>
-                        <OnyxCheckbox {...variant.checkboxProps} isDisabled />
-                      </TestScope>
-                    </TestGrid>
-
-                    <TestGrid label="disabled, focus-visible" height={gridHeight} width={gridWidth}>
-                      <TestScope isFocusVisible>
-                        <OnyxCheckbox {...variant.checkboxProps} isDisabled />
-                      </TestScope>
+                      <RadioGroup {...variant.radioGroupProps}>
+                        <TestScope isFocusVisible>
+                          <OnyxRadioButton {...variant.radioButtonProps} />
+                        </TestScope>
+                      </RadioGroup>
                     </TestGrid>
                   </div>
                 );
