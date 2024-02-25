@@ -1,14 +1,14 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import { Radio, RadioProps } from "react-aria-components";
 import { classNames, classNamesUniq } from "../helper/classes";
-import { TestStateContext } from "../helper/tests";
+import { useTestStateContext } from "../helper/tests";
 
 export type OnyxRadioButtonProps = RadioProps & {
   children?: React.ReactNode;
 };
 
 export const OnyxRadioButton = ({ children, ...props }: OnyxRadioButtonProps) => {
-  const testState = useContext(TestStateContext);
+  const testState = useTestStateContext();
 
   return (
     <Radio

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, type CSSProperties } from "react";
+import { createContext, useContext, useEffect, useRef, type CSSProperties } from "react";
 import { classNames } from "./classes";
 
 export type TestLayoutProps = {
@@ -75,6 +75,10 @@ export const TestGrid = ({ children, ...props }: TestGridProps) => {
 };
 
 export const TestStateContext = createContext<TestStateProps>({});
+
+export const useTestStateContext = (): TestStateProps => {
+  return useContext(TestStateContext);
+};
 
 export type TestStateProps = {
   children?: React.ReactNode;
