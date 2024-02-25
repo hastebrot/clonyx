@@ -1,9 +1,8 @@
 import { cloneElement } from "react";
-import { RadioGroupProps } from "react-aria-components";
 import { TestGrid, TestLabel, TestLayout, TestState } from "../helper/tests";
 import { OnyxTheme, OnyxThemeProps } from "../onyx-theme/theme";
 import { OnyxRadioButton, OnyxRadioButtonProps } from "./radiobutton";
-import { OnyxRadioButtonGroup } from "./radiobuttongroup";
+import { OnyxRadioButtonGroup, OnyxRadioButtonGroupProps } from "./radiobuttongroup";
 
 export const OnyxRadioButtonMatrix = () => {
   const themes = [
@@ -14,28 +13,28 @@ export const OnyxRadioButtonMatrix = () => {
   type MatrixVariant = {
     label: string;
     radioButtonProps: OnyxRadioButtonProps;
-    radioGroupProps: RadioGroupProps;
+    radioButtonGroupProps: OnyxRadioButtonGroupProps;
   };
   const variants: MatrixVariant[] = [
     {
       label: "unselected",
       radioButtonProps: { children: "Label", value: "radio" },
-      radioGroupProps: { value: "" },
+      radioButtonGroupProps: { value: "" },
     },
     {
       label: "selected",
       radioButtonProps: { children: "Label", value: "radio" },
-      radioGroupProps: { value: "radio" },
+      radioButtonGroupProps: { value: "radio" },
     },
     {
       label: "invalid unselected",
       radioButtonProps: { children: "Label", value: "radio" },
-      radioGroupProps: { value: "", isInvalid: true },
+      radioButtonGroupProps: { value: "", isInvalid: true },
     },
     {
       label: "invalid selected",
       radioButtonProps: { children: "Label", value: "radio" },
-      radioGroupProps: { value: "radio", isInvalid: true },
+      radioButtonGroupProps: { value: "radio", isInvalid: true },
     },
   ];
 
@@ -57,13 +56,13 @@ export const OnyxRadioButtonMatrix = () => {
                     <TestLabel label={variant.label} width={labelWidth} />
 
                     <TestGrid label="normal" height={gridHeight} width={gridWidth}>
-                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                      <OnyxRadioButtonGroup {...variant.radioButtonGroupProps}>
                         <OnyxRadioButton {...variant.radioButtonProps} />
                       </OnyxRadioButtonGroup>
                     </TestGrid>
 
                     <TestGrid label="hovered" height={gridHeight} width={gridWidth}>
-                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                      <OnyxRadioButtonGroup {...variant.radioButtonGroupProps}>
                         <TestState isHovered>
                           <OnyxRadioButton {...variant.radioButtonProps} />
                         </TestState>
@@ -71,7 +70,7 @@ export const OnyxRadioButtonMatrix = () => {
                     </TestGrid>
 
                     <TestGrid label="focus-visible" height={gridHeight} width={gridWidth}>
-                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                      <OnyxRadioButtonGroup {...variant.radioButtonGroupProps}>
                         <TestState isFocusVisible>
                           <OnyxRadioButton {...variant.radioButtonProps} />
                         </TestState>
@@ -79,13 +78,13 @@ export const OnyxRadioButtonMatrix = () => {
                     </TestGrid>
 
                     <TestGrid label="disabled, normal" height={gridHeight} width={gridWidth}>
-                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                      <OnyxRadioButtonGroup {...variant.radioButtonGroupProps}>
                         <OnyxRadioButton {...variant.radioButtonProps} isDisabled />
                       </OnyxRadioButtonGroup>
                     </TestGrid>
 
                     <TestGrid label="disabled, hovered" height={gridHeight} width={gridWidth}>
-                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                      <OnyxRadioButtonGroup {...variant.radioButtonGroupProps}>
                         <TestState isHovered>
                           <OnyxRadioButton {...variant.radioButtonProps} isDisabled />
                         </TestState>
@@ -93,7 +92,7 @@ export const OnyxRadioButtonMatrix = () => {
                     </TestGrid>
 
                     <TestGrid label="disabled, focus-visible" height={gridHeight} width={gridWidth}>
-                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                      <OnyxRadioButtonGroup {...variant.radioButtonGroupProps}>
                         <TestState isFocusVisible>
                           <OnyxRadioButton {...variant.radioButtonProps} isDisabled />
                         </TestState>
