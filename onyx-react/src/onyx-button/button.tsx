@@ -20,8 +20,8 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
           "[--onyx-button-background-color:transparent]",
           "[--onyx-button-background-hover-color:--onyx-color-base-primary-100]",
           "[--onyx-button-border-color:transparent]",
-          "[--onyx-button-text-color:--onyx-color-text-icons-primary-intense]",
           "[--onyx-button-outline-color:--onyx-color-base-primary-200]",
+          "[--onyx-button-text-color:--onyx-color-text-icons-primary-intense]",
 
           !state.isDisabled && [
             "data-[hovered]:[--onyx-button-background-color:--onyx-button-background-hover-color]",
@@ -33,8 +33,8 @@ export const OnyxButton = ({ children, ...props }: OnyxButtonProps) => {
           "gap-[--onyx-spacing-5xs]",
           "rounded-[--onyx-radius-sm]",
           "border-[0.0625rem]",
-          "bg-[--onyx-button-background-color]",
           "border-[--onyx-button-border-color]",
+          "bg-[--onyx-button-background-color]",
           "text-[--onyx-button-text-color]",
 
           state.isDisabled ? "cursor-default" : "cursor-pointer",

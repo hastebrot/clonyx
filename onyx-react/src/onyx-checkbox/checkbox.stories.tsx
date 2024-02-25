@@ -1,5 +1,5 @@
 import { cloneElement } from "react";
-import { TestGrid, TestLabel, TestLayout, TestScope } from "../helper/tests";
+import { TestGrid, TestLabel, TestLayout, TestState } from "../helper/tests";
 import { OnyxTheme, OnyxThemeProps } from "../onyx-theme/theme";
 import { OnyxCheckbox, OnyxCheckboxProps } from "./checkbox";
 
@@ -50,15 +50,15 @@ export const OnyxCheckboxMatrix = () => {
                     </TestGrid>
 
                     <TestGrid label="hovered" height={gridHeight} width={gridWidth}>
-                      <TestScope isHovered>
+                      <TestState isHovered>
                         <OnyxCheckbox {...variant.checkboxProps} />
-                      </TestScope>
+                      </TestState>
                     </TestGrid>
 
                     <TestGrid label="focus-visible" height={gridHeight} width={gridWidth}>
-                      <TestScope isFocusVisible>
+                      <TestState isFocusVisible>
                         <OnyxCheckbox {...variant.checkboxProps} />
-                      </TestScope>
+                      </TestState>
                     </TestGrid>
 
                     <TestGrid label="disabled, normal" height={gridHeight} width={gridWidth}>
@@ -66,15 +66,15 @@ export const OnyxCheckboxMatrix = () => {
                     </TestGrid>
 
                     <TestGrid label="disabled, hovered" height={gridHeight} width={gridWidth}>
-                      <TestScope isHovered>
+                      <TestState isHovered>
                         <OnyxCheckbox {...variant.checkboxProps} isDisabled />
-                      </TestScope>
+                      </TestState>
                     </TestGrid>
 
                     <TestGrid label="disabled, focus-visible" height={gridHeight} width={gridWidth}>
-                      <TestScope isFocusVisible>
+                      <TestState isFocusVisible>
                         <OnyxCheckbox {...variant.checkboxProps} isDisabled />
-                      </TestScope>
+                      </TestState>
                     </TestGrid>
                   </div>
                 );

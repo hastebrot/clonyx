@@ -1,8 +1,9 @@
 import { cloneElement } from "react";
-import { RadioGroup, RadioGroupProps } from "react-aria-components";
-import { TestGrid, TestLabel, TestLayout, TestScope } from "../helper/tests";
+import { RadioGroupProps } from "react-aria-components";
+import { TestGrid, TestLabel, TestLayout, TestState } from "../helper/tests";
 import { OnyxTheme, OnyxThemeProps } from "../onyx-theme/theme";
 import { OnyxRadioButton, OnyxRadioButtonProps } from "./radiobutton";
+import { OnyxRadioButtonGroup } from "./radiobuttongroup";
 
 export const OnyxRadioButtonMatrix = () => {
   const themes = [
@@ -26,10 +27,20 @@ export const OnyxRadioButtonMatrix = () => {
       radioButtonProps: { children: "Label", value: "radio" },
       radioGroupProps: { value: "radio" },
     },
+    {
+      label: "invalid unselected",
+      radioButtonProps: { children: "Label", value: "radio" },
+      radioGroupProps: { value: "", isInvalid: true },
+    },
+    {
+      label: "invalid selected",
+      radioButtonProps: { children: "Label", value: "radio" },
+      radioGroupProps: { value: "radio", isInvalid: true },
+    },
   ];
 
   const labelWidth = 10;
-  const gridHeight = 5;
+  const gridHeight = 4;
   const gridWidth = 12;
 
   return (
@@ -46,25 +57,47 @@ export const OnyxRadioButtonMatrix = () => {
                     <TestLabel label={variant.label} width={labelWidth} />
 
                     <TestGrid label="normal" height={gridHeight} width={gridWidth}>
-                      <RadioGroup {...variant.radioGroupProps}>
+                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
                         <OnyxRadioButton {...variant.radioButtonProps} />
-                      </RadioGroup>
+                      </OnyxRadioButtonGroup>
                     </TestGrid>
 
                     <TestGrid label="hovered" height={gridHeight} width={gridWidth}>
-                      <RadioGroup {...variant.radioGroupProps}>
-                        <TestScope isHovered>
+                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                        <TestState isHovered>
                           <OnyxRadioButton {...variant.radioButtonProps} />
-                        </TestScope>
-                      </RadioGroup>
+                        </TestState>
+                      </OnyxRadioButtonGroup>
                     </TestGrid>
 
                     <TestGrid label="focus-visible" height={gridHeight} width={gridWidth}>
-                      <RadioGroup {...variant.radioGroupProps}>
-                        <TestScope isFocusVisible>
+                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                        <TestState isFocusVisible>
                           <OnyxRadioButton {...variant.radioButtonProps} />
-                        </TestScope>
-                      </RadioGroup>
+                        </TestState>
+                      </OnyxRadioButtonGroup>
+                    </TestGrid>
+
+                    <TestGrid label="disabled, normal" height={gridHeight} width={gridWidth}>
+                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                        <OnyxRadioButton {...variant.radioButtonProps} isDisabled />
+                      </OnyxRadioButtonGroup>
+                    </TestGrid>
+
+                    <TestGrid label="disabled, hovered" height={gridHeight} width={gridWidth}>
+                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                        <TestState isHovered>
+                          <OnyxRadioButton {...variant.radioButtonProps} isDisabled />
+                        </TestState>
+                      </OnyxRadioButtonGroup>
+                    </TestGrid>
+
+                    <TestGrid label="disabled, focus-visible" height={gridHeight} width={gridWidth}>
+                      <OnyxRadioButtonGroup {...variant.radioGroupProps}>
+                        <TestState isFocusVisible>
+                          <OnyxRadioButton {...variant.radioButtonProps} isDisabled />
+                        </TestState>
+                      </OnyxRadioButtonGroup>
                     </TestGrid>
                   </div>
                 );
