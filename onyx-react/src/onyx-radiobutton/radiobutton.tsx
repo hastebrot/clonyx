@@ -1,78 +1,112 @@
 import { Fragment } from "react";
 import { Radio, RadioProps } from "react-aria-components";
 import { classNames, classNamesUniq } from "../helper/classes";
+import { useTestStateContext } from "../helper/tests";
 
 export type OnyxRadioButtonProps = RadioProps & {
   children?: React.ReactNode;
 };
 
 export const OnyxRadioButton = ({ children, ...props }: OnyxRadioButtonProps) => {
+  const testState = useTestStateContext();
+
   return (
     <Radio
       {...props}
       className={(state) =>
         classNamesUniq(
-          // .onyx-checkbox
-          "group inline-flex items-center",
-          "max-w-max",
-          "text-[--onyx-color-text-icons-neutral-intense]",
+          // .onyx-radiobutton
+          "flex items-center",
+
           state.isDisabled ? "cursor-default" : "cursor-pointer",
-          state.isDisabled && "text-[--onyx-color-text-icons-neutral-soft]"
+
+          "[--onyx-radiobutton-background-color:--onyx-color-base-background-blank]",
+          "[--onyx-radiobutton-border-color:--onyx-color-base-neutral-400]",
+          "[--onyx-radiobutton-outline-color:--onyx-color-base-primary-200]",
+          "[--onyx-radiobutton-outline-width:0]",
+          "[--onyx-radiobutton-text-color:--onyx-color-text-icons-neutral-intense]",
+
+          (state.isHovered || testState.isHovered) && [
+            /* wrap */
+            "[--onyx-radiobutton-border-color:--onyx-color-base-primary-300]",
+          ],
+
+          state.isSelected && [
+            "[--onyx-radiobutton-border-color:--onyx-color-base-primary-500]",
+            "[--onyx-radiobutton-background-color:--onyx-color-base-primary-500]",
+
+            (state.isHovered || testState.isHovered) && [
+              "[--onyx-radiobutton-border-color:--onyx-color-base-primary-400]",
+              "[--onyx-radiobutton-background-color:--onyx-color-base-primary-400]",
+            ],
+          ],
+
+          state.isInvalid && [
+            "[--onyx-radiobutton-border-color:--onyx-color-base-danger-500]",
+            "[--onyx-radiobutton-outline-color:--onyx-color-base-danger-200]",
+
+            state.isSelected && [
+              "[--onyx-radiobutton-background-color:--onyx-color-base-danger-500]",
+
+              (state.isHovered || testState.isHovered) && [
+                "[--onyx-radiobutton-border-color:--onyx-color-base-danger-400]",
+                "[--onyx-radiobutton-background-color:--onyx-color-base-danger-400]",
+              ],
+            ],
+          ],
+
+          (state.isFocusVisible || testState.isFocusVisible) && [
+            "[--onyx-radiobutton-outline-width:--onyx-spacing-sm]",
+          ],
+
+          state.isDisabled && [
+            "[--onyx-radiobutton-border-color:--onyx-color-base-neutral-200]",
+            "[--onyx-radiobutton-outline-width:0]",
+            "[--onyx-radiobutton-text-color:--onyx-color-text-icons-neutral-soft]",
+
+            state.isSelected && [
+              "[--onyx-radiobutton-background-color:--onyx-color-base-neutral-300]",
+              "[--onyx-radiobutton-border-color:--onyx-color-base-neutral-300]",
+            ],
+          ]
         )
       }
     >
-      {(state) => (
+      {(_state) => (
         <Fragment>
           <div
             className={classNames(
-              // .onyx-checkbox__container
-              "inline-flex items-center",
-              "p-[--onyx-spacing-sm]",
-              "rounded-[--onyx-radius-full]",
-
-              !state.isDisabled && [
-                /* wrap */
-                "group-data-[focus-visible]:bg-[--onyx-color-base-primary-200]",
-              ]
+              // .onyx-radiobutton__container
+              "inline-flex items-center"
             )}
           >
             <div
               className={classNames(
-                // .onyx-checkbox__input
+                // .onyx-radiobutton__input
+                "inline-flex items-center justify-center",
                 "h-[1rem] w-[1rem]",
-                "rounded-[--onyx-radius-sm]",
-                "border-[0.0625rem]",
-                "border-[--onyx-color-base-neutral-400]",
-                "[outline:none]",
-                "bg-[--onyx-color-base-background-blank]",
-                "bg-no-repeat bg-[position:50%] bg-[size:100%]",
 
-                state.isSelected && [
-                  "border-[--onyx-color-base-primary-500]",
-                  "bg-[--onyx-color-base-primary-500]",
-                ],
-                state.isDisabled && [
-                  /* wrap */
-                  "border-[--onyx-color-base-neutral-300]",
-                ],
-                !state.isDisabled && [
-                  /* wrap */
-                  "group-data-[hovered]:border-[--onyx-color-base-primary-300]",
-                  "group-data-[hovered]:bg-[--onyx-color-base-primary-300]",
-                ]
+                "rounded-[--onyx-radius-full]",
+                "border-[0.0625rem]",
+                "border-[--onyx-radiobutton-border-color]",
+                "bg-[--onyx-radiobutton-background-color]",
+                "[outline:var(--onyx-radiobutton-outline-width)_solid_var(--onyx-radiobutton-outline-color)]"
               )}
             >
-              {state.isSelected && (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 32 32">
-                  <path d="m21.311 10.793-8.293 8.293-3.291-3.292-1.415 1.415 4.706 4.705 9.707-9.707z" />
-                </svg>
-              )}
+              <div
+                className={classNames(
+                  // .onyx-radiobutton__input::before
+                  "h-[0.375rem] w-[0.375rem]",
+                  "bg-[--onyx-color-base-background-blank]",
+                  "rounded-[--onyx-radius-full]"
+                )}
+              ></div>
             </div>
           </div>
           <div
             className={classNames(
-              // .onyx-checkbox__label
-              "inline-block m-0 text-[1rem] leading-[1.5rem]"
+              // .onyx-radiobutton__label
+              "inline-block m-0 pl-[--onyx-spacing-sm] text-[1rem] leading-[1]"
             )}
           >
             {children as React.ReactNode}

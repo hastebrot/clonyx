@@ -1,4 +1,4 @@
-import { useEffect, useRef, type CSSProperties } from "react";
+import { createContext, useContext, useEffect, useRef, type CSSProperties } from "react";
 import { classNames } from "./classes";
 
 export type TestLayoutProps = {
@@ -74,7 +74,13 @@ export const TestGrid = ({ children, ...props }: TestGridProps) => {
   );
 };
 
-export type TestScopeProps = {
+export const TestStateContext = createContext<TestStateProps>({});
+
+export const useTestStateContext = (): TestStateProps => {
+  return useContext(TestStateContext);
+};
+
+export type TestStateProps = {
   children?: React.ReactNode;
   isFocused?: boolean;
   isFocusVisible?: boolean;
@@ -82,7 +88,7 @@ export type TestScopeProps = {
   isPressed?: boolean;
 };
 
-export const TestScope = ({ children, ...props }: TestScopeProps) => {
+export const TestState = ({ children, ...props }: TestStateProps) => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (ref.current) {
@@ -103,5 +109,11 @@ export const TestScope = ({ children, ...props }: TestScopeProps) => {
     }
   }, [ref.current]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <TestStateContext.Provider value={{ ...props }}>
+      <div ref={ref} className="[display:inherit]">
+        {children}
+      </div>
+    </TestStateContext.Provider>
+  );
 };
