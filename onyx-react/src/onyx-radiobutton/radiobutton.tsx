@@ -77,7 +77,9 @@ export const OnyxRadioButton = ({ children, ...props }: OnyxRadioButtonProps) =>
           <div
             className={classNames(
               // .onyx-radiobutton__container
-              "inline-flex items-center"
+              "inline-flex items-center",
+              "rounded-[--onyx-radius-full]",
+              "[outline:var(--onyx-radiobutton-outline-width)_solid_var(--onyx-radiobutton-outline-color)]"
             )}
           >
             <div
@@ -89,8 +91,7 @@ export const OnyxRadioButton = ({ children, ...props }: OnyxRadioButtonProps) =>
                 "rounded-[--onyx-radius-full]",
                 "border-[0.0625rem]",
                 "border-[--onyx-radiobutton-border-color]",
-                "bg-[--onyx-radiobutton-background-color]",
-                "[outline:var(--onyx-radiobutton-outline-width)_solid_var(--onyx-radiobutton-outline-color)]"
+                "bg-[--onyx-radiobutton-background-color]"
               )}
             >
               <div

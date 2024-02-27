@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useRef, type CSSProperties } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  type CSSProperties,
+  type ElementRef,
+} from "react";
 import { classNames } from "./classes";
 
 export type TestLayoutProps = {
@@ -89,7 +96,7 @@ export type TestStateProps = {
 };
 
 export const TestState = ({ children, ...props }: TestStateProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<ElementRef<"div">>(null);
   useEffect(() => {
     if (ref.current) {
       for (const node of ref.current.children) {

@@ -26,10 +26,22 @@ export const OnyxCheckboxMatrix = () => {
       label: "indeterminate",
       checkboxProps: { children: "Label", isIndeterminate: true },
     },
+    {
+      label: "invalid unselected",
+      checkboxProps: { children: "Label", isInvalid: true, isSelected: false },
+    },
+    {
+      label: "invalid selected",
+      checkboxProps: { children: "Label", isInvalid: true, isSelected: true },
+    },
+    {
+      label: "invalid indeterminate",
+      checkboxProps: { children: "Label", isInvalid: true, isIndeterminate: true },
+    },
   ];
 
   const labelWidth = 10;
-  const gridHeight = 5;
+  const gridHeight = 4;
   const gridWidth = 12;
 
   return (

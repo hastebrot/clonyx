@@ -1,21 +1,31 @@
 import { Fragment } from "react";
 import { Checkbox, CheckboxProps } from "react-aria-components";
 import { classNames, classNamesUniq } from "../helper/classes";
+import { useTestStateContext } from "../helper/tests";
 
 export type OnyxCheckboxProps = CheckboxProps & {};
 
 export const OnyxCheckbox = ({ children, ...props }: OnyxCheckboxProps) => {
+  const testState = useTestStateContext();
+
   return (
     <Checkbox
       {...props}
       className={(state) =>
         classNamesUniq(
           // .onyx-checkbox
-          "group inline-flex items-center",
+          "group flex items-center",
           "max-w-max",
           "text-[--onyx-color-text-icons-neutral-intense]",
           state.isDisabled ? "cursor-default" : "cursor-pointer",
-          state.isDisabled && "text-[--onyx-color-text-icons-neutral-soft]"
+          state.isDisabled && "text-[--onyx-color-text-icons-neutral-soft]",
+
+          "[--onyx-radiobutton-outline-color:--onyx-color-base-primary-200]",
+          "[--onyx-radiobutton-outline-width:0]",
+
+          (state.isFocusVisible || testState.isFocusVisible) && [
+            "[--onyx-radiobutton-outline-width:--onyx-spacing-sm]",
+          ]
         )
       }
     >
@@ -26,6 +36,7 @@ export const OnyxCheckbox = ({ children, ...props }: OnyxCheckboxProps) => {
               // .onyx-checkbox__container
               "inline-flex items-center",
               "p-[--onyx-spacing-sm]",
+              "-m-[--onyx-spacing-sm]",
               "rounded-[--onyx-radius-full]",
 
               !state.isDisabled && [
@@ -44,11 +55,27 @@ export const OnyxCheckbox = ({ children, ...props }: OnyxCheckboxProps) => {
                 "[outline:none]",
                 "bg-[--onyx-color-base-background-blank]",
                 "bg-no-repeat bg-[position:50%] bg-[size:100%]",
+                // "[outline:var(--onyx-radiobutton-outline-width)_solid_var(--onyx-radiobutton-outline-color)]",
 
                 (state.isSelected || state.isIndeterminate) && [
                   "border-[--onyx-color-base-primary-500]",
                   "bg-[--onyx-color-base-primary-500]",
                 ],
+
+                state.isInvalid && [
+                  "border-[--onyx-color-base-danger-500]",
+                  "bg-[--onyx-color-base-danger-200]",
+
+                  (state.isSelected || state.isIndeterminate) && [
+                    "bg-[--onyx-color-base-danger-500]",
+
+                    (state.isHovered || testState.isHovered) && [
+                      "border-[--onyx-color-base-danger-400]",
+                      "bg-[--onyx-color-base-danger-400]",
+                    ],
+                  ],
+                ],
+
                 state.isDisabled && [
                   /* wrap */
                   "border-[--onyx-color-base-neutral-300]",
@@ -75,7 +102,7 @@ export const OnyxCheckbox = ({ children, ...props }: OnyxCheckboxProps) => {
           <div
             className={classNames(
               // .onyx-checkbox__label
-              "inline-block m-0 text-[1rem] leading-[1.5rem]"
+              "inline-block m-0 pl-[--onyx-spacing-sm] text-[1rem] leading-[1]"
             )}
           >
             {children as React.ReactNode}
